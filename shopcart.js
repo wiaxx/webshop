@@ -1,5 +1,7 @@
 window.addEventListener('load', getShopCart);
 
+let totalSum = 0;
+
 function getShopCart() {
     const ls = localStorage.getItem("shoppingCart");
     const shopCart = JSON.parse(ls);
@@ -10,7 +12,7 @@ function getShopCart() {
     }
 
     shopCart.forEach(element => {
-        console.log(element);
+        // console.log(element);
         const div = document.createElement("div");
         div.setAttribute("id", `${element.id}`);
         div.classList.add("scDiv")
@@ -41,5 +43,49 @@ function getShopCart() {
         div.append(img, contentDiv, remove);
         const cartPage = document.querySelector(".shopping");
         cartPage.appendChild(div);
+
+        totalSum += Number(element.price);
     })
+    const orderBtn = document.createElement("button");
+    orderBtn.classList.add("placeOrder");
+    orderBtn.innerText = "Continue with order";
+    document.querySelector(".total").appendChild(orderBtn);
+
+    const totProd = document.querySelector(".totprod");
+    totProd.innerText = `Total products: ${shopCart.length}`;
+
+    const totSum = document.querySelector(".sum");
+    totSum.innerText = `Total sum: ${totalSum}:-`;
+
+    document.querySelector(".shopping").addEventListener('click', removeItem);
+    document.querySelector(".placeOrder").addEventListener('click', placeOrder);
 };
+
+function removeItem(e) {
+    console.log(e);
+    const element = e.target.parentElement;
+    console.log(element);
+    const ls = localStorage.getItem("shoppingCart");
+    const savedProducts = JSON.parse(ls);
+
+    const index = savedProducts.findIndex(x => x.id == e.target.parentElement.id)
+    console.log(index);
+
+    const shopItem = savedProducts.splice(index, 1);
+    console.log(shopItem);
+    console.log(savedProducts)
+    console.log(shopItem[0].price);
+
+
+    totalSum -= Number(shopItem[0].price);
+    const totSum = document.querySelector(".sum");
+    totSum.innerText = `Total sum: ${totalSum}:-`;
+
+    localStorage.setItem("shoppingCart", JSON.stringify(savedProducts));
+    element.remove();
+
+}
+
+function placeOrder() {
+    
+}

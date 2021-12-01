@@ -211,6 +211,19 @@ span {
     padding-right: 50px;
 }
 
+.placeOrder {
+    background-color: rgba(211, 255, 211, 0.733);
+    border: 1px solid lightgrey;
+    border-radius: 10px;
+    font-size: 1.5rem;
+    color: rgb(88, 88, 88);
+}
+
+.placeOrder:hover {
+    color: white;
+    background-color: rgb(0, 56, 0);
+}
+
 .lsTag {
     /* border: 1px solid green; */
     background-color: rgba(255, 0, 0, 0.253);
@@ -249,6 +262,15 @@ span {
     border-radius: 20px;
     font-size: 1.4rem;
     border: 1px solid grey;
+}
+
+.orderMain {
+    height: 100vh
+}
+
+.orderDetails {
+    width: 60vw;
+    margin: 5px auto 5px auto;
 }
 
 @media (max-width: 420px) {
