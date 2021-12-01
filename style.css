@@ -1,0 +1,266 @@
+* {
+    box-sizing: border-box;
+}
+
+header, nav, main, footer {
+    margin: 5px auto 5px auto;
+    width: 80vw;
+    border: 1px solid lightgray;
+    border-radius: 10px;
+}
+
+header {
+    height: 100px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+#rubrik {
+    color: rgb(47, 151, 47);
+    border-bottom: none;
+    margin-right: 15%;
+}
+
+#logo {
+    width: 70px;
+    margin: 5px;
+}
+
+nav {
+    height: 70px;
+    display: flex;
+    justify-content: flex-end;
+}
+
+.indMain {
+    height: 400px;
+    background-image: url(https://images.unsplash.com/photo-1483794344563-d27a8d18014e?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=870&q=80);
+    background-position: bottom right;
+    background-repeat: no-repeat;
+    background-size: cover;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.prodPage {
+    border-bottom: none;
+    color: gray;
+    background-color: rgba(255, 255, 255, 0.452);
+    display: inline-block;
+    padding: 10px;
+}
+
+footer {
+    height: 100px;
+}
+
+nav button {
+    width: 20%;
+    height: 100%;
+    background-color: white;
+    border: none;
+    font-size: 2rem;
+    color: rgb(3, 63, 3);
+}
+
+nav button:hover {
+    background-color: salmon;
+}
+
+form {
+    border: 1px solid black;
+    height: 30vh;
+    width: 60%;
+    margin: 15px auto 5px auto;
+    padding: 10px;
+    display: flex;
+    flex-direction: column;
+    background-color: antiquewhite;
+    justify-content: center;
+}
+
+#password, #username, form button {
+    background-color: white;
+    margin: 5px;
+    font-size: 1.5rem;
+    border: 1px solid gainsboro;
+    text-align: center;
+}
+
+.create {
+    background-color: white;
+    border: 1px solid grey;
+    border-radius: 10px;
+    font-size: 1.6rem;
+    float: right;
+    margin: 10px;
+}
+
+.prodForm {
+    width: 80%;
+    height: 450px;
+    border: 1px solid black;
+    background-color: paleturquoise;
+    display: flex;
+    overflow: scroll;
+    /* padding-bottom: 5px; */
+}
+
+.prodName, .prodDesc, .prodImg, .prodPrice, .prodBtn, .imgUrl, label, .prodInv, .getImg {
+    height: 30px;
+    font-size: 1.3rem;
+    margin: 2px;
+    font-family: 'Courier New', Courier, monospace;
+    border: none;
+}
+
+.adminHead {
+    height: 100px;
+}
+
+.adminMain, .cartMain, .wlMain {
+    height: 700px;
+    background-image: none;
+}
+
+.wlMain {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.prodMain {
+    height: 1800px;
+    background-image: none;
+}
+
+.productsPage {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-around;
+    min-height: 500px;
+    /* border: 1px solid salmon; */
+    padding: 5px;
+}
+
+.prodImg {
+    width: 100%;
+    height: auto;
+}
+
+.prodDiv {
+    font-family: 'Times New Roman', Times, serif;
+    font-size: 1.2rem;
+    border: 1px solid rgba(144, 238, 144, 0.514);
+    margin: 2px;
+    width: 30%;
+    padding: 5px;
+    overflow-wrap: break-word;
+}
+
+.buyBtn, .wlBtn {
+    background-color: white;
+    border: 1px solid lightgrey;
+    font-size: 1.5rem;
+    border-radius: 20px;
+    margin: 2px;
+}
+
+.wlBtn {
+    color: red;
+}
+
+.heart {
+    color: white;
+    background-color: red;
+}
+
+p {
+    width: 130px;
+    padding-bottom: 15px;
+    border-bottom: 1px solid lightgrey;
+}
+
+h1 {
+    color: rgb(3, 63, 3);
+    border-bottom: 1px solid lightgrey;
+}
+
+h2 {
+    text-align: center;
+}
+
+span {
+    font-size: 1.4rem;
+    font-weight: bold;
+}
+
+.cartMain {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    padding: 15px;
+}
+
+.total {
+    display: flex;
+    flex-direction: column;
+    text-align: right;
+    padding-right: 50px;
+}
+
+.lsTag {
+    /* border: 1px solid green; */
+    background-color: rgba(255, 0, 0, 0.253);
+    border-radius: 15px;
+    margin: 5px;
+    padding: 3px;
+    color: rgb(66, 66, 66);
+}
+
+.wlDiv, .scDiv {
+    width: 95%;
+    min-height: 250px;
+    display: flex;
+    border: 1px solid grey;
+    padding: 5px;
+    margin: 5px;
+    align-items: center;
+    flex-wrap: wrap;
+}
+
+.wlDiv img, .scDiv img {
+    width: 150px;
+    margin-right: 10px;
+}
+
+.contentDiv {
+    flex: 2;
+}
+
+.contentDiv p {
+    width: 100%;
+}
+
+.removeBtn {
+    background-color: white;
+    border-radius: 20px;
+    font-size: 1.4rem;
+    border: 1px solid grey;
+}
+
+@media (max-width: 420px) {
+    header, nav, main, footer {
+        width: 100vw;
+    }
+
+    .productsPage {
+        flex-direction: column;
+    }
+
+    .prodDiv {
+        width: 100%;
+    }
+}
