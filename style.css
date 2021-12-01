@@ -121,7 +121,7 @@ form {
 }
 
 .adminMain, .cartMain, .wlMain {
-    height: 700px;
+    min-height: 700px;
     background-image: none;
 }
 
@@ -132,7 +132,7 @@ form {
 }
 
 .prodMain {
-    height: 1800px;
+    min-height: 1800px;
     background-image: none;
 }
 
@@ -178,7 +178,7 @@ form {
 }
 
 p {
-    width: 130px;
+    width: 100%;
     padding-bottom: 15px;
     border-bottom: 1px solid lightgrey;
 }

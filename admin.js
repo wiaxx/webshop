@@ -8,25 +8,26 @@ window.addEventListener('load', () => {
         form.style.display = "none";
         createBtn();
         adminBtn.innerHTML = '<i class="fas fa-sign-out-alt"></i>';
-        // let loggedIn = 60;
-        // setTimeout(() => {
-        //     localStorage.setItem("logged", false);
-        //     adminBtn.innerHTML = '<i class="far fa-user">';
-        //     loggedIn * 6000;
-        // })
     }
 });
 
 
 document.querySelector(".login").addEventListener('click', logIn);
-// document.querySelector(".btnAdm").addEventListener('click', (e) => {
-//     e.preventDefault();
-//     if (localStorage.getItem("logged") === true) {
-//         console.log("falsk");
-//         localStorage.setItem("logged", false);
-//         adminBtn.innerHTML = '<i class="far fa-user">';
-//     }
-// });
+document.querySelector(".btnAdm").addEventListener('click', (e) => {
+    e.preventDefault();
+    if (e.target.classList == "fas fa-sign-out-alt") {
+        console.log("falsk");
+        localStorage.setItem("logged", false);
+
+        const adminBtn = document.querySelector(".btnAdm");
+        const form = document.querySelector("form");
+        const btn = document.querySelector(".create");
+
+        adminBtn.innerHTML = '<i class="far fa-user">';
+        form.style.display = "flex";
+        btn.style.display = "none";
+    }
+});
 
 function logIn(e) {
     e.preventDefault();
