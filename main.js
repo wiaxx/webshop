@@ -16,18 +16,27 @@ async function loadImg() {
 
 loadImg();
 */
+// set admin credentials in localStorage when page is loaded
 window.addEventListener('load', setAdminStorage);
 
 function setAdminStorage() {
     const adminCred = {username: "Admin", password: "password"};
+    const wishListBtn = document.querySelector(".wishBtn");
+    const shopCartBtn = document.querySelector(".cart");
+
     if (localStorage.getItem("admin") === null) {
         localStorage.setItem("admin", JSON.stringify(adminCred));
     }
+    // if wishlist is empty, make the heart black else red
     if (localStorage.getItem("wishlist") === "[]") {
-        const wishListBtn = document.querySelector(".wishBtn");
         wishListBtn.style.color = "black";
     } else {
-        const wishListBtn = document.querySelector(".wishBtn");
         wishListBtn.style.color = "red";
+    }
+    // if shoppingcart is empty, make black else green
+    if (localStorage.getItem("shoppingCart") == "[]") {
+        shopCartBtn.style.color = "black";
+    } else {
+        shopCartBtn.style.color = "rgb(99, 158, 99)";
     }
 }

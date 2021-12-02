@@ -1,3 +1,4 @@
+//
 window.addEventListener('load', () => {
     const form = document.querySelector("form");
     const adminBtn = document.querySelector(".btnAdm");
