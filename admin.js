@@ -1,7 +1,5 @@
-//
+//check if already logged in as admin when page is loaded
 window.addEventListener('load', () => {
-    const form = document.querySelector("form");
-    const adminBtn = document.querySelector(".btnAdm");
     const lsLog = localStorage.getItem("logged");
     const logged = JSON.parse(lsLog);
 
@@ -12,68 +10,65 @@ window.addEventListener('load', () => {
     }
 });
 
+// global variables used in different functions
+const form = document.querySelector("form");
+const adminBtn = document.querySelector(".btnAdm");
+const prodBG = document.querySelector(".products");
+
 
 document.querySelector(".login").addEventListener('click', logIn);
 document.querySelector(".btnAdm").addEventListener('click', (e) => {
     e.preventDefault();
     if (e.target.classList == "fas fa-sign-out-alt") {
-        console.log("falsk");
         localStorage.setItem("logged", false);
 
-        const adminBtn = document.querySelector(".btnAdm");
-        const form = document.querySelector("form");
         const btn = document.querySelector(".create");
-
         adminBtn.innerHTML = '<i class="far fa-user">';
         form.style.display = "flex";
         btn.style.display = "none";
-    }
+    };
 });
 
+// function to check if input value matches stored admin creds
 function logIn(e) {
     e.preventDefault();
 
-    const form = document.querySelector("form");
     const username = document.querySelector("#username").value;
     const password = document.querySelector("#password").value;
     const ls = localStorage.getItem("admin");
     const adminCred = JSON.parse(ls);
-    const lsLog = localStorage.getItem("logged");
-    const logged = JSON.parse(lsLog);
-    const adminBtn = document.querySelector(".btnAdm");
 
+    // check if input username and password matches stored admin cred
     if (username === adminCred.username && password === adminCred.password) {
         form.style.display = "none";
         localStorage.setItem("logged", true);
         createBtn();
         adminBtn.innerHTML = '<i class="fas fa-sign-out-alt"></i>';
-    }
-    // else if (logged === true) {
-    //     localStorage.setItem("logged", false)
-    else {
-        alert("Not authorized");
-        localStorage.setItem("logged", false);
-    }
-}
+    } else {
+        alert("Not authorized or wrong username or password");
+    };
+};
 
+// function create button for create product form
 function createBtn() {
     const btn = document.createElement("button");
-    const prodList = document.querySelector(".products")
+    const btnHolder = document.querySelector(".btnHolder")
 
     btn.classList.add("create");
     btn.textContent = "Create product";
-    prodList.appendChild(btn);
+    btnHolder.append(btn);
     document.querySelector(".create").addEventListener('click', createProd);
 }
 
-
+// function to create form for product information
 function createProd() {
     const div = document.querySelector(".products");
 
+    // create form for input fields
     const form = document.createElement("form");
     form.classList.add("prodForm");
 
-
+    // create labels for input fields
     const labelName = document.createElement("label");
     labelName.setAttribute("for", "prodName");
     labelName.textContent = "Product Name";
@@ -90,12 +85,11 @@ function createProd() {
     labelInv.setAttribute("for", "prodDesc");
     labelInv.textContent = "Inventory";
 
+    // create all input fields
     const prodName = document.createElement("input");
     prodName.classList.add("prodName");
     const prodDesc = document.createElement("input");
     prodDesc.classList.add("prodDesc");
-    // const prodImg = document.createElement("input");
-    // prodImg.setAttribute("type", "file");
     const prodImg = document.createElement("button");
     prodImg.classList.add("getImg");
     prodImg.textContent = "Get product image";
@@ -117,13 +111,11 @@ function createProd() {
     document.querySelector(".getImg").addEventListener('click', getProdImg);
 }
 
-// const products = [];
-
-
+// function to save created product to localStorage
 function saveProduct(e) {
     e.preventDefault();
-    console.log("hej");
 
+    // check if stored ID to prevent duplicates when input later
     let id;
     if (localStorage.getItem("id") === null) {
         id = 0;
@@ -146,6 +138,7 @@ function saveProduct(e) {
         inv: invent
     }
 
+    // check if alreade stored products
     let products;
     if (localStorage.getItem("products") === null) {
         products = [];
@@ -155,19 +148,23 @@ function saveProduct(e) {
     products.push(product)
     localStorage.setItem("products", JSON.stringify(products));
 
+    // save id to localStorage
     id++;
     localStorage.setItem("id", JSON.stringify(id));
 
+    prodBG.style.backgroundImage = "none";
+
+    // reset input fields in form
     document.querySelector(".prodForm").reset();
 }
 
+// function to fetch product image from unsplash
 async function getProdImg(e) {
     e.preventDefault();
     const response = await fetch('https://api.unsplash.com/photos/random?client_id=MrBKjudpbn-DaRLVMzoMnS-_1SsFcfWXYBUaSGDkMlw')
     response.json()
         .then(res => {
-            console.log(res)
             document.querySelector(".imgUrl").value = `${res.urls.small}`
-            document.querySelector(".products").style.backgroundImage = `url(${res.urls.small})`;
+            prodBG.style.backgroundImage = `url(${res.urls.small})`;
         });
-}
+};

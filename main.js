@@ -38,5 +38,5 @@ function setAdminStorage() {
         shopCartBtn.style.color = "black";
     } else {
         shopCartBtn.style.color = "rgb(99, 158, 99)";
-    }
-}
+    };
+};
