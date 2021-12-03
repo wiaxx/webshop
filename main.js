@@ -20,7 +20,7 @@ loadImg();
 window.addEventListener('load', setAdminStorage);
 
 function setAdminStorage() {
-    const adminCred = {username: "Admin", password: "password"};
+    const adminCred = { username: "Admin", password: "password" };
     const wishListBtn = document.querySelector(".wishBtn");
     const shopCartBtn = document.querySelector(".cart");
 
