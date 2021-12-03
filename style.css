@@ -219,6 +219,11 @@ form {
     margin: 2px;
 }
 
+.buyBtn:hover {
+    background-color: rgb(0, 56, 0);
+    color: white;
+}
+
 .wlBtn {
     color: red;
 }
@@ -288,7 +293,7 @@ span {
     width: 95%;
     min-height: 250px;
     display: flex;
-    border: 1px solid grey;
+    border: 1px solid lightgray;
     padding: 5px;
     margin: 5px;
     align-items: center;
@@ -301,7 +306,7 @@ span {
 }
 
 .contentDiv {
-    flex: 2;
+    flex: 4;
 }
 
 .contentDiv p {

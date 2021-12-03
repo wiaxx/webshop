@@ -15,7 +15,6 @@ const form = document.querySelector("form");
 const adminBtn = document.querySelector(".btnAdm");
 const prodBG = document.querySelector(".products");
 
-
 document.querySelector(".login").addEventListener('click', logIn);
 document.querySelector(".btnAdm").addEventListener('click', (e) => {
     e.preventDefault();
