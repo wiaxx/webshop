@@ -17,4 +17,4 @@ function checkLocalStorage() {
     };
 };
 
-module.exports = checkLocalStorage;
+export default checkLocalStorage;

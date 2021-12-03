@@ -1,3 +1,5 @@
+import checkLocalStorage from './modules/checkSaved.js';
+
 window.addEventListener('load', getShopCart);
 
 let totalSum = 0;
@@ -14,18 +16,20 @@ function getShopCart() {
     if (localStorage.getItem("shoppingCart") !== null) {
         h2.style.display = "none";
     };
+
+    checkLocalStorage();
     //make wishlist button red if products in it
-    if (localStorage.getItem("wishlist") === "[]") {
-        wishListBtn.style.color = "black";
-    } else {
-        wishListBtn.style.color = "red";
-    };
-    // make shoppingcart green if products in it
-    if (localStorage.getItem("shoppingCart") == "[]") {
-        shopCartBtn.style.color = "black";
-    } else {
-        shopCartBtn.style.color = "rgb(99, 158, 99)";
-    };
+    // if (localStorage.getItem("wishlist") === "[]") {
+    //     wishListBtn.style.color = "black";
+    // } else {
+    //     wishListBtn.style.color = "red";
+    // };
+    // // make shoppingcart green if products in it
+    // if (localStorage.getItem("shoppingCart") == "[]") {
+    //     shopCartBtn.style.color = "black";
+    // } else {
+    //     shopCartBtn.style.color = "rgb(99, 158, 99)";
+    // };
 
     shopCart.forEach(element => {
         const div = document.createElement("div");
