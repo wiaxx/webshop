@@ -68,6 +68,7 @@ nav {
 footer {
     height: 80px;
     display: flex;
+    padding: 10px;
 }
 
 nav button {
@@ -102,11 +103,15 @@ nav button:hover {
     padding: 15px;
 }
 
-.sm {
+.sm, .darklgh {
     background-color: white;
     border: none;
     font-size: 2rem;
     color: rgb(167, 167, 167);
+}
+
+.sm:hover, .darklgh:hover {
+    color:rgb(3, 63, 3)
 }
 
 form {
@@ -352,6 +357,20 @@ span {
     margin: 5px auto 5px auto;
 }
 
+#payment-form {
+    background-color: #666666;
+}
+
+/* body {
+    --text-color: #222;
+    --bkg-color: #fff;
+}
+
+body.dark-theme {
+    --text-color: #eee;
+    --bkg-color: #121212;
+} */
+
 @media (max-width: 420px) {
     header, nav, main, footer, .btnHolder {
         width: 100vw;
@@ -365,3 +384,31 @@ span {
         width: 100%;
     }
 }
+
+@media (prefers-color-scheme: dark) {
+    /* Dark theme styles go here */
+    body {
+        color: #eee;
+        background: #121212;
+      }
+      /* nav button {
+          background-color: #121212;
+      }
+      .sm, .darklgh {
+          background-color: #121212;
+      }
+      a {
+        color: #809fff;
+      }
+      h1 {
+          color:rgb(47, 151, 47)
+      } */
+
+      .light-theme {
+        color: #222;
+        background-color: #fff;
+      }
+  }
+  
+  /* @media (prefers-color-scheme: light) {
+    /* Light theme styles go here */

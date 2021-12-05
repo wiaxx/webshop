@@ -6,9 +6,9 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="./style.css">
+    <script src="https://js.stripe.com/v3/" defer></script>
     <script type="module" src="./shopcart.js" defer></script>
     <script src="https://kit.fontawesome.com/8b57bcf31f.js" crossorigin="anonymous"></script>
-    <script src="https://js.stripe.com/v3/" defer></script>
     <title>Shopping cart</title>
 </head>
 
@@ -35,6 +35,17 @@
             <span class="sum">
                 Total sum:
             </span>
+
+            <form id="payment-form">
+                <label for="name">Name</label>
+                <input type="text" id="name" value="Amanda">
+                <label for="email">Email</label>
+                <input type="email" id="email" value="a@test.com">
+                <label for="card">Card</label>
+                <div id="card"></div>
+                <button>Pay</button>
+            </form>
+            <div id="messages" role="alert"></div>
         </div>
     </main>
 </body>

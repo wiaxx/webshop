@@ -1,4 +1,86 @@
 import checkLocalStorage from './modules/checkSaved.js';
+// import {loadstripe} from '/@stripe/stripe-js';
+
+// const stripe = await loadstripe('pk_test_51K2zTpD3GBWLS7iLLPtd48ZhQIIr0mPsszx3VB6ALeTAmY3ROomN4C1feYx1xXntPj0BQ58rjC6OKdjDLTaz8bLo00x7Wim6Ff')
+// // var elements = stripe.elements({
+// //     clientSecret = 'CLIENT_SECRET',
+// // });
+// let paymentElement = element.getElement('payment');
+
+// console.log(stripe);
+// console.log(elements);
+
+document.addEventListener('DOMContentLoaded', async () => {
+    // const { publishableKey } = await fetch('/config').then(r=>r.json());
+    // const stripe = Stripe('publishableKey')
+    const stripe = Stripe('pk_test_51K2zTpD3GBWLS7iLLPtd48ZhQIIr0mPsszx3VB6ALeTAmY3ROomN4C1feYx1xXntPj0BQ58rjC6OKdjDLTaz8bLo00x7Wim6Ff')
+
+    var elements = stripe.elements();
+    var cardElement = elements.create('card');
+    cardElement.mount('#card');
+
+    const form = document.querySelector("#payment-form");
+    form.addEventListener('submit', async (e) => {
+        addMessage('Submitting details to backend');
+        e.preventDefault();
+        const {error: backendError, clientSecret } = await fetch('/create-payment-intent', {
+            method: 'POST',
+            headers: {
+                'Content-type': 'application/json',
+            },
+            body: JSON.stringify({
+                PaymentMethodType: 'cart',
+                currency: 'sek',
+            }),
+        })  .then(r=>r.json());
+        if(backendError) {
+            addMessage(backendError.message);
+            return;
+        }
+
+        addMessage("PaymentIntent created!");
+
+        const nameInput = document.querySelector("#name")
+        const emailInput = document.querySelector("#email")
+        const {error: stripeError, paymentIntent} = await stripe.confirmCardPayment(
+            clientSecret, {
+                payment_method: {
+                    card: cardElement,
+                    billing_details: {
+                        name: nameInput.value,
+                        email: emailInput.value,
+                    }
+                }
+            }
+        )
+        if(stripeError) {
+            addMessage(stripeError.message);
+            return;
+        }
+        addMessage(`PaymentIntent (${paymentIntent.id}): ${paymentIntent.status}`)
+            // .then((response) => response.json())
+            // .then((data) => {
+            //     console.log('Sucess: ', data)
+            // })
+            // .catch((error) =>
+            //     console.error('Error: ', error))
+    });
+});
+
+const addMessage = (message) => {
+    const messagesDiv = document.querySelector("#messages");
+    messagesDiv.style.display = 'block';
+    messagesDiv.innerHTML += '>' + message + '<br>';
+    console.log('StripeSamleDebug:', message);
+};
+
+
+
+
+
+
+
+
 
 window.addEventListener('load', getShopCart);
 
