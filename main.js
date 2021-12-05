@@ -41,28 +41,12 @@ function setAdminStorage() {
     };
 };
 
-
-// if (prefersDarkScheme.matches) {
-//     document.body.classList.add('dark-theme');
-// } else {
-//     document.body.classList.remove('dark-theme');
-// }
-
-
-// Listen for a click on the button 
+// Change from default prefered color scheme to the other
 document.querySelector(".darklgh").addEventListener("click", () => {
-    console.log("works")
     const prefersDarkScheme = window.matchMedia('(prefers-color-scheme: dark)');
-    console.log(prefersDarkScheme);
-
-    // If the OS is set to dark mode...
     if (prefersDarkScheme.matches === true) {
-        // ...then apply the .light-theme class to override those styles
         document.body.classList.toggle("light-theme");
-        console.log("test")
-        // Otherwise...
     } else {
-        // ...apply the .dark-theme class to override the default light styles
         document.body.classList.toggle("dark-theme");
-    }
+    };
 });
