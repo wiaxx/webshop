@@ -1,3 +1,4 @@
+import checkLocalStorage from './modules/checkSaved.js';
 window.addEventListener('load', getProducts);
 
 //function to load products from localStorage
@@ -5,21 +6,7 @@ function getProducts() {
     const ls = localStorage.getItem("products");
     const savedProducts = JSON.parse(ls);
 
-    const wishListBtn = document.querySelector(".wishBtn");
-    const shopCartBtn = document.querySelector(".cart");
-
-    //make wishlist button red if products in it
-    if (localStorage.getItem("wishlist") === "[]") {
-        wishListBtn.style.color = "black";
-    } else {
-        wishListBtn.style.color = "red";
-    }
-    // make shoppingcart green if products in it
-    if (localStorage.getItem("shoppingCart") == "[]") {
-        shopCartBtn.style.color = "black";
-    } else {
-        shopCartBtn.style.color = "rgb(99, 158, 99)";
-    };
+    checkLocalStorage();
 
     // loop products and create html and show on site
     savedProducts.forEach(element => {
@@ -58,9 +45,9 @@ function getProducts() {
     });
     checkInventory(savedProducts);
     document.querySelector(".productsPage").addEventListener("click", checkWlOrShop);
-}
+};
 
-//function to check event and send to specifik function
+//function to check event and send to specific function
 function checkWlOrShop(e) {
     if (e.target.classList == 'far fa-heart') {
         saveToWishlist(e);

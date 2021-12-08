@@ -57,7 +57,7 @@ function createBtn() {
     btn.textContent = "Create product";
     btnHolder.append(btn);
     document.querySelector(".create").addEventListener('click', createProd);
-}
+};
 
 // function to create form for product information
 function createProd() {
@@ -108,7 +108,7 @@ function createProd() {
 
     document.querySelector(".prodBtn").addEventListener('click', saveProduct);
     document.querySelector(".getImg").addEventListener('click', getProdImg);
-}
+};
 
 // function to save created product to localStorage
 function saveProduct(e) {
@@ -155,12 +155,12 @@ function saveProduct(e) {
 
     // reset input fields in form
     document.querySelector(".prodForm").reset();
-}
+};
 
 // function to fetch product image from unsplash
 async function getProdImg(e) {
     e.preventDefault();
-    const response = await fetch('https://api.unsplash.com/photos/random?client_id=MrBKjudpbn-DaRLVMzoMnS-_1SsFcfWXYBUaSGDkMlw')
+    const response = await fetch('https://api.unsplash.com/photos/random?client_id=MrBKjudpbn-DaRLVMzoMnS-_1SsFcfWXYBUaSGDkMlw&orientation=portrait')
     response.json()
         .then(res => {
             document.querySelector(".imgUrl").value = `${res.urls.small}`

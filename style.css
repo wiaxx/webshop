@@ -288,7 +288,7 @@ span {
     display: flex;
     flex-direction: column;
     text-align: right;
-    padding-right: 50px;
+    /* padding-right: 50px; */
 }
 
 .placeOrder {
@@ -322,6 +322,10 @@ span {
     margin: 5px;
     align-items: center;
     flex-wrap: wrap;
+}
+
+.scDiv {
+    width: 100%;
 }
 
 .wlDiv img, .scDiv img {
@@ -358,7 +362,21 @@ span {
 }
 
 #payment-form {
-    background-color: #666666;
+    background-color: #6d6c6c;
+    display: none;
+    height: auto;
+}
+
+#payment-form input {
+    font-size: 1.5rem;
+    border-radius: 10px;
+    border: none;
+}
+
+#card, .StripeElement {
+    color: white;
+    background-color: white;
+    font-size: 20px
 }
 
 /* body {
@@ -391,7 +409,7 @@ body.dark-theme {
         color: #eee;
         background: #121212;
       }
-      /* nav button {
+      nav button {
           background-color: #121212;
       }
       .sm, .darklgh {
@@ -402,7 +420,7 @@ body.dark-theme {
       }
       h1 {
           color:rgb(47, 151, 47)
-      } */
+      }
 
       .light-theme {
         color: #222;

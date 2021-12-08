@@ -1,4 +1,4 @@
-// function to check if products in wishlist or shopping cart
+// function to check if products is in wishlist or shopping cart
 function checkLocalStorage() {
     const wishListBtn = document.querySelector(".wishBtn");
     const shopCartBtn = document.querySelector(".cart");

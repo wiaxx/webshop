@@ -1,4 +1,4 @@
-// const checkLS = require('./checkSaved');
+import checkLocalStorage from './modules/checkSaved.js';
 
 window.addEventListener('load', getWishlist);
 
@@ -7,21 +7,7 @@ function getWishlist() {
     const ls = localStorage.getItem("wishlist");
     const savedProducts = JSON.parse(ls);
 
-    const shopCartBtn = document.querySelector(".cart");
-
-    //make wishlist button red if products in it
-    if (localStorage.getItem("wishlist") !== null) {
-        const wishListBtn = document.querySelector(".wishBtn");
-        wishListBtn.style.color = "red";
-    }
-    // if shoppingcart is empty, make black else green
-    if (localStorage.getItem("shoppingCart") == "[]") {
-        shopCartBtn.style.color = "black";
-    } else {
-        shopCartBtn.style.color = "rgb(99, 158, 99)";
-    };
-
-    // checkLS.checkLocalStorage();
+    checkLocalStorage();
 
     savedProducts.forEach(element => {
         const div = document.createElement("div");
@@ -61,7 +47,7 @@ function getWishlist() {
     });
     // checkInventory(savedProducts);
     document.querySelector(".wlMain").addEventListener("click", checkShopOrDel);
-}
+};
 
 //function to check event and send to specific function
 function checkShopOrDel(e) {
@@ -92,7 +78,6 @@ function removeItem(e) {
 
 // function to put product in shoppingCart and localStorage
 function putInShopcart(e) {
-    console.log(e);
     const prodId = e.target.parentElement.id;
     console.log(prodId);
 
